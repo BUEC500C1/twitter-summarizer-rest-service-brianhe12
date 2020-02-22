@@ -1,4 +1,6 @@
 import subprocess
+import twitter_api
+
 '''
 Main Exercise:  Using the twitter feed, construct a daily video summarizing a twitter handle day
     Convert text into an image in a frame
@@ -6,7 +8,14 @@ Main Exercise:  Using the twitter feed, construct a daily video summarizing a tw
     Display each video frame for 3 seconds
 '''
 
-s1 = ['Tweet 1', 'Tweet 2', 'Tweet 3']
+# Grab Tweets
+s1 = twitter_api.get_feed('@kingjames', 3)
+
+# Open File in Write Mode
+file_obj = open("list.txt","w") 
+for i in range(len(s1)):
+    file_obj.write(('file '+ '\'output{i}.mp4\'' + '\n').format(i = i))
+file_obj.close()
 
 # Generates 3 second .mp4 file given text
 for i in range(len(s1)):
@@ -14,15 +23,7 @@ for i in range(len(s1)):
     "drawtext=fontfile=/path/to/font.ttf:fontsize=12: \
     fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:text={str1}" \
     output{i}.mp4'.format(str1 = s1[i], i=i))
-
-# Open File in Write Mode
-file_obj = open("list.txt","w") 
-for i in range(3):
-    file_obj.write(('file '+ './' + 'output{i}.mp4' + '\n').format(i = i))
-file_obj.close()
-
-# Wait for subprocess to finish
-p1.wait()
+    p1.wait()
 
 # Merge
 p2 = subprocess.Popen('ffmpeg -f concat -safe 0 -i list.txt -c copy mergedfile.mp4')
@@ -31,5 +32,10 @@ p2 = subprocess.Popen('ffmpeg -f concat -safe 0 -i list.txt -c copy mergedfile.m
 p2.wait()
 
 # Remove Files
-for i in range(3):
-    subprocess.Popen(('rm output{i}.mp4').format(i = i))
+for i in range(len(s1)):
+    p3 = subprocess.Popen(('rm output{i}.mp4').format(i = i))
+
+# Wait for subprocess to finish
+p3.wait()
+
+print('\033[92m' + 'Finished' + '\033[0m')
