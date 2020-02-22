@@ -8,8 +8,12 @@ Main Exercise:  Using the twitter feed, construct a daily video summarizing a tw
     Display each video frame for 3 seconds
 '''
 
+# Get User Input
+twitter_handle = input("Please enter a twitter handle : ") 
+nums = input("How many top tweets would you want to see? : ")
+
 # Grab Tweets
-s1 = twitter_api.get_feed('@kobebryant', 5)
+s1 = twitter_api.get_feed(twitter_handle, int(nums))
 
 # Open File in Write Mode
 file_obj = open("list.txt","w") 
