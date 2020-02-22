@@ -9,7 +9,7 @@ Main Exercise:  Using the twitter feed, construct a daily video summarizing a tw
 '''
 
 # Grab Tweets
-s1 = twitter_api.get_feed('@kingjames', 3)
+s1 = twitter_api.get_feed('@kobebryant', 5)
 
 # Open File in Write Mode
 file_obj = open("list.txt","w") 
