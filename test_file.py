@@ -23,7 +23,7 @@ def test_generate_video():
     p1 = subprocess.Popen('ffmpeg -f lavfi -i color=c=blue:s=320x240:d=3 -vf \
     "drawtext=fontfile=/path/to/font.ttf:fontsize=12: \
     fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:text=Test_Video" \
-    output0.mp4')
+    output100.mp4')
     p1.wait()
 
     # Test if .mp4 video exists
