@@ -1,5 +1,6 @@
 import subprocess
 import twitter_api
+import test_file
 
 '''
 Main Exercise:  Using the twitter feed, construct a daily video summarizing a twitter handle day
@@ -42,4 +43,6 @@ for i in range(len(s1)):
 # Wait for subprocess to finish
 p3.wait()
 
+# Finish
 print('\033[92m' + 'Finished' + '\033[0m')
+
