@@ -22,6 +22,3 @@ def get_feed(twitter_handle,numTweets):
             s1.append(tweet.text)
 
     return s1
-
-# s1 = get_feed('@realDonaldTrump', 10)
-# print(s1[1])
