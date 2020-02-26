@@ -1,12 +1,12 @@
+from keys import *
+
 def get_feed(twitter_handle,numTweets):
     import tweepy
-    from dotenv import load_dotenv
     import os
+    
 
-    load_dotenv()
-
-    auth = tweepy.OAuthHandler(os.getenv("CONSUMER_KEY"), os.getenv("CONSUMER_SECRET"))
-    auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_TOKEN_SECRET"))
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_TOKEN,ACCESS_TOKEN_SECRET)
 
     api = tweepy.API(auth)
 

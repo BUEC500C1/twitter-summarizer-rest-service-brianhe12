@@ -1,7 +1,17 @@
 import os.path
 from os import path
 import subprocess
+'''
+When you are running the pytest, in case the keys are not there, you can do a test
 
+Function that returns the twitter information : make it return a JSON that you stored in your program based on one of the outputs taht you have
+just to make sure it works well
+
+Every function where you need a key
+
+If key fails -> return JSON data
+
+'''
 def test_file():
     # Test Open File & Write/Close
     file_obj = open("list.txt","w") 
@@ -21,6 +31,13 @@ def test_file():
 def test_generate_video():
     # Test if .mp4 video exists
     assert path.exists('mergedfile.mp4')
+
+def test_keys_test():
+    # Test if keys file exists
+    if path.exists('keysshghgh.py'):
+        assert True
+    else:
+        return ['No Keys']
 
 
 
