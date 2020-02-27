@@ -34,7 +34,7 @@ def test_generate_video():
 
 def test_keys_test():
     # Test if keys file exists
-    if path.exists('keysshghgh.py'):
+    if path.exists('keys.py'):
         assert True
     else:
         return ['No Keys']

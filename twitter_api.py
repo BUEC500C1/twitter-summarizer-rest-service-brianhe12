@@ -1,13 +1,13 @@
 from keys import *
+import os
+import os.path
+from os import path
+import tweepy
 
 def get_feed(twitter_handle,numTweets):
-    import tweepy
-    import os
     
-
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_TOKEN,ACCESS_TOKEN_SECRET)
-
     api = tweepy.API(auth)
 
     # Print Twitter Feed of a User
@@ -22,3 +22,11 @@ def get_feed(twitter_handle,numTweets):
             s1.append(tweet.text)
 
     return s1
+
+def check_keys():
+    if path.exists('keys.py'):
+        auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+        auth.set_access_token(ACCESS_TOKEN,ACCESS_TOKEN_SECRET)
+    else:
+        print('File \'keys.py\' does not exist. Please enter your keys in a \'keys.py\' file in this directory')
+        return
