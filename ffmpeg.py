@@ -12,8 +12,15 @@ Main Exercise:  Using the twitter feed, construct a daily video summarizing a tw
     Display each video frame for 3 seconds
 '''
 # Exit if no key.py file
-if not path.exists('keys.py'):
-    print('\033[31m' + 'File \'keys.py\' does not exist. Please enter your keys in a \'keys.py\' file in this directory :)' + '\033[0m')
+if not path.exists('kseys.py'):
+    print('\033[31m' + 'File \'keys.py\' does not exist. Please enter your keys in a \'keys.py\' file in this directory. Returning hard coded json results. No video created.' + '\033[0m')
+    import json
+
+    def getJSON(filePathAndName):
+        with open(filePathAndName, 'r') as fp:
+            return json.load(fp)
+    myObj = getJSON('./stub.json')
+    print(myObj)
     quit()
 
 # Get User Input
