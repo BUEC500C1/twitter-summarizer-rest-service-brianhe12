@@ -14,14 +14,14 @@ def get_feed(twitter_handle,numTweets):
     public_tweets = api.user_timeline(screen_name=twitter_handle, count=numTweets)
 
     # Init list to collect tweets
-    s1 = []
+    queue = []
     for tweet in public_tweets:
         if len(tweet.text) > 40:
-            s1.append(tweet.text[0:40] + '...')
+            queue.append(tweet.text[0:40] + '...')
         else:
-            s1.append(tweet.text)
+            queue.append(tweet.text)
 
-    return s1
+    return queue
 
 def check_keys():
     if path.exists('keys.py'):
