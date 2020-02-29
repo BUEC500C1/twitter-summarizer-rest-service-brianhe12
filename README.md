@@ -32,6 +32,6 @@ The program will ask for user inputs such as Twitter Handle and Number of top tw
 
 <img src = "./CPU_Utilization/CPU.JPG" width = 550>
 
-Each CPU core can have two threads. Running this program, we encounter certain bottlenecks when we try to query more than 20 tweets and convert each of them into a three second frame for our video. The average time it takes for the program to finish executing when the number of tweets is less than or equal to 20 is less than 10 seconds. Trying to query any more tweets may take atleast 3x more time. When we reach the bottleneck for our resources, it would not be uncommon for CPU utilization rates to drop to 0 and stay for 20 seconds as depicted in the image above.
+As each CPU core can have two threads, my dual core processor is able to run four threads. Running this program, we encounter bottlenecks when we try to query more than 20 tweets and convert each of them into a three second frame for our video. The average time it takes for the program to finish executing when the number of tweets is less than or equal to 20 is less than 10 seconds. Trying to query any more tweets may take 3x more time. When we reach this resource bottleneck, it would not be uncommon for CPU utilization rates to drop to 0 and stay for 20 seconds as depicted in the image above.
 
 <img src = "./CPU_Utilization/time_to_finish.JPG">
