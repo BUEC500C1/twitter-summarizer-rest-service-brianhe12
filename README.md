@@ -1,5 +1,5 @@
 # video-brianhe12
-Created a module that generates a daily video summarzing a twitter handle day. This is done by converting text into an image in a frame, sequencing the images in chronological order, and then using ffmpeg to convert each image into a three second video.
+Created a module that generates a daily video summarzing a twitter handle day. This is done by converting text into an image in a frame, sequencing the images in chronological order, and then using ffmpeg to convert each image into a three second video. These serperate images are then merged together to get our daily video summary.
 
 ## Built with:
 
@@ -32,6 +32,6 @@ The program will ask for user inputs such as Twitter Handle and Number of top tw
 
 <img src = "./CPU_Utilization/CPU.JPG" width = 550>
 
-Each CPU core can have two threads. Running this program on a dual core CPU, we encounter certain bottlenecks when we try to query more than 20 tweets and convert each of them into a three second frame for our video. The average time it takes for the program to finish executing when the number of tweets is less than or equal to 20 is less than 10 seconds. Trying to query any more tweets may take atleast 3x more time. When we reach the bottleneck for our resources, it would not be uncommon for CPU utilization rates to drop to 0 and stay for 20 seconds as depicted in the image above.
+Each CPU core can have two threads. Running this program, we encounter certain bottlenecks when we try to query more than 20 tweets and convert each of them into a three second frame for our video. The average time it takes for the program to finish executing when the number of tweets is less than or equal to 20 is less than 10 seconds. Trying to query any more tweets may take atleast 3x more time. When we reach the bottleneck for our resources, it would not be uncommon for CPU utilization rates to drop to 0 and stay for 20 seconds as depicted in the image above.
 
 <img src = "./CPU_Utilization/time_to_finish.JPG">
