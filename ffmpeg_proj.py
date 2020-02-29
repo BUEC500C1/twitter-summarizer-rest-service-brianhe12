@@ -4,6 +4,7 @@ import test_file
 import os
 import os.path
 from os import path
+import time
 
 '''
 Main Exercise:  
@@ -12,6 +13,9 @@ Main Exercise:
     Do a sequence of all texts and images in chronological order.
     Display each video frame for 3 seconds
 '''
+# Start time
+start_time = time.time()
+
 # Exit if no key.py file
 if not path.exists('keys.py'):
     print('\033[31m' + 'File \'keys.py\' does not exist. Please enter your keys in a \'keys.py\' file in this directory. Returning hard coded json results. No video created.' + '\033[0m')
@@ -59,5 +63,5 @@ for i in range(len(queue)):
 p3.wait()
 
 # Finish
-print('\033[92m' + 'Finished' + '\033[0m')
+print('\033[92m' + 'Finished in ' + str(time.time() - start_time) + ' seconds' + '\033[0m')
 
