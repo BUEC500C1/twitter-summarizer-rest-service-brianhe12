@@ -24,7 +24,7 @@ ACCESS_TOKEN_SECRET = "********"
 
 ## Example Usage
 ```
-PS C:\..\video-brianhe12> python .\ffmpeg.py
+PS C:\..\video-brianhe12> python .\ffmpeg_proj.py
 ```
 The program will ask for user inputs such as Twitter Handle and Number of top tweets the user wants to grab. After inputing valid inputs, a ```mergedfile.mp4``` result will be generated in the current directory.
 
