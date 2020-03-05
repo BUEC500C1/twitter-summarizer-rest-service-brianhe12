@@ -13,7 +13,7 @@ Main Exercise:
     Do a sequence of all texts and images in chronological order.
     Display each video frame for 3 seconds
 '''
-def gen_daily_video():
+def gen_daily_video(twitter_handle,nums):
     # Start time
     start_time = time.time()
 
@@ -28,10 +28,6 @@ def gen_daily_video():
         myObj = getJSON('./stub.json')
         print(myObj)
         quit()
-
-    # Get User Input
-    twitter_handle = input("Please enter a twitter handle : ") 
-    nums = input("How many top tweets would you want to see? : ")
 
     # Grab Tweets
     queue = twitter_api.get_feed(twitter_handle, int(nums))
