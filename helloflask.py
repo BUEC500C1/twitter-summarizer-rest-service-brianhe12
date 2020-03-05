@@ -1,6 +1,5 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template
 import ffmpeg_proj
-import time
 
 app = Flask(__name__)
 
