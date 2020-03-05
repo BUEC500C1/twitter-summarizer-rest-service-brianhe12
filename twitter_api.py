@@ -3,9 +3,9 @@ import os
 import os.path
 from os import path
 import tweepy
+import concurrent.futures
 
 def get_feed(twitter_handle,numTweets):
-    
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_TOKEN,ACCESS_TOKEN_SECRET)
     api = tweepy.API(auth)
@@ -15,18 +15,21 @@ def get_feed(twitter_handle,numTweets):
 
     # Init list to collect tweets
     queue = []
-    for tweet in public_tweets:
-        if len(tweet.text) > 40:
-            queue.append(tweet.text[0:40] + '...')
+    def get_tweets_from_public_tweets(public_tweets):
+        if len(public_tweets.text) > 40:
+            queue.append(public_tweets.text[0:40] + '...')
         else:
-            queue.append(tweet.text)
+            queue.append(public_tweets.text)
+
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(get_tweets_from_public_tweets, public_tweets)
 
     return queue
 
 def check_keys():
     if path.exists('keys.py'):
-        auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-        auth.set_access_token(ACCESS_TOKEN,ACCESS_TOKEN_SECRET)
+        pass
     else:
         print('File \'keys.py\' does not exist. Please enter your keys in a \'keys.py\' file in this directory')
-        return
+        quit()
+

@@ -13,55 +13,58 @@ Main Exercise:
     Do a sequence of all texts and images in chronological order.
     Display each video frame for 3 seconds
 '''
-# Start time
-start_time = time.time()
+def gen_daily_video():
+    # Start time
+    start_time = time.time()
 
-# Exit if no key.py file
-if not path.exists('keys.py'):
-    print('\033[31m' + 'File \'keys.py\' does not exist. Please enter your keys in a \'keys.py\' file in this directory. Returning hard coded json results. No video created.' + '\033[0m')
-    import json
+    # Exit if no key.py file
+    if not path.exists('keys.py'):
+        print('\033[31m' + 'File \'keys.py\' does not exist. Please enter your keys in a \'keys.py\' file in this directory. Returning hard coded json results. No video created.' + '\033[0m')
+        import json
 
-    def getJSON(filePathAndName):
-        with open(filePathAndName, 'r') as fp:
-            return json.load(fp)
-    myObj = getJSON('./stub.json')
-    print(myObj)
-    quit()
+        def getJSON(filePathAndName):
+            with open(filePathAndName, 'r') as fp:
+                return json.load(fp)
+        myObj = getJSON('./stub.json')
+        print(myObj)
+        quit()
 
-# Get User Input
-twitter_handle = input("Please enter a twitter handle : ") 
-nums = input("How many top tweets would you want to see? : ")
+    # Get User Input
+    twitter_handle = input("Please enter a twitter handle : ") 
+    nums = input("How many top tweets would you want to see? : ")
 
-# Grab Tweets
-queue = twitter_api.get_feed(twitter_handle, int(nums))
+    # Grab Tweets
+    queue = twitter_api.get_feed(twitter_handle, int(nums))
 
-# Open File in Write Mode
-file_obj = open("list.txt","w") 
-for i in range(len(queue)):
-    file_obj.write(('file '+ '\'output{i}.mp4\'' + '\n').format(i = i))
-file_obj.close()
+    # Open File in Write Mode
+    file_obj = open("list.txt","w") 
+    for i in range(len(queue)):
+        file_obj.write(('file '+ '\'output{i}.mp4\'' + '\n').format(i = i))
+    file_obj.close()
 
-# Generates 3 second .mp4 file given text
-for i in range(len(queue)):
-    p1 = subprocess.Popen('ffmpeg -f lavfi -i color=c=blue:s=320x240:d=3 -vf \
-    "drawtext=fontfile=/path/to/font.ttf:fontsize=12: \
-    fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:text={str1}" \
-    output{i}.mp4'.format(str1 = queue[i], i=i))
-    p1.wait()
+    # Generates 3 second .mp4 file given text
+    for i in range(len(queue)):
+        p1 = subprocess.Popen('ffmpeg -f lavfi -i color=c=blue:s=320x240:d=3 -vf \
+        "drawtext=fontfile=/path/to/font.ttf:fontsize=12: \
+        fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:text={str1}" \
+        output{i}.mp4'.format(str1 = queue[i], i=i))
+        p1.wait()
 
-# Merge
-p2 = subprocess.Popen('ffmpeg -f concat -safe 0 -i list.txt -c copy mergedfile.mp4')
+    # Merge
+    p2 = subprocess.Popen('ffmpeg -f concat -safe 0 -i list.txt -c copy output_video.mp4')
 
-# Wait for subprocess to finish
-p2.wait()
+    # Wait for subprocess to finish
+    p2.wait()
 
-# Remove Files
-for i in range(len(queue)):
-    p3 = subprocess.Popen(('rm output{i}.mp4').format(i = i))
+    # Remove Files
+    for i in range(len(queue)):
+        p3 = subprocess.Popen(('rm output{i}.mp4').format(i = i))
 
-# Wait for subprocess to finish
-p3.wait()
+    # Wait for subprocess to finish
+    p3.wait()
 
-# Finish
-print('\033[92m' + 'Finished in ' + str(time.time() - start_time) + ' seconds' + '\033[0m')
+    # Finish
+    print('\033[92m' + 'Finished in ' + str(round(time.time() - start_time,2)) + ' seconds' + '\033[0m')
+
+
 
