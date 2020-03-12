@@ -30,8 +30,7 @@ def test_file():
 
 def test_generate_video():
     # Test if .mp4 video exists
-    # assert path.exists('output_video.mp4')
-    assert True
+    assert path.exists('output_video.mp4')
 
 def test_keys_test():
     # Test if keys file exists
