@@ -1,1 +1,1 @@
-web: gunicorn src.helloflask:app
+web: gunicorn helloflask:app
