@@ -1,6 +1,12 @@
 # video-brianhe12
 Created a module that generates a daily video summarzing a twitter handle day. This is done by converting text into an image in a frame, sequencing the images in chronological order, and then using ffmpeg to convert each image into a three second video. These serperate images are then merged together to get our daily video summary.
 
+## Update: Converted into a web based API with Python Flask
+
+To run, type in twitter handle and number of tweets parameter into the URL.
+
+Example: ```http://127.0.0.1:5000/userhandle/3``` will return a video of the three most recent tweets from user 'userhandle'.
+
 ## Built with:
 
 [Tweepy](http://docs.tweepy.org/en/latest/#)
