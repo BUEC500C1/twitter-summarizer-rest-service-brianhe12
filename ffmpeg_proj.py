@@ -17,17 +17,17 @@ def gen_daily_video(twitter_handle,nums):
     # Start time
     start_time = time.time()
 
-    # Exit if no key.py file
-    if not path.exists('keys.py'):
-        print('\033[31m' + 'File \'keys.py\' does not exist. Please enter your keys in a \'keys.py\' file in this directory. Returning hard coded json results. No video created.' + '\033[0m')
-        import json
+    # # Exit if no key.py file
+    # if not path.exists('keys.py'):
+    #     print('\033[31m' + 'File \'keys.py\' does not exist. Please enter your keys in a \'keys.py\' file in this directory. Returning hard coded json results. No video created.' + '\033[0m')
+    #     import json
 
-        def getJSON(filePathAndName):
-            with open(filePathAndName, 'r') as fp:
-                return json.load(fp)
-        myObj = getJSON('./stub.json')
-        print(myObj)
-        quit()
+    #     def getJSON(filePathAndName):
+    #         with open(filePathAndName, 'r') as fp:
+    #             return json.load(fp)
+    #     myObj = getJSON('./stub.json')
+    #     print(myObj)
+    #     quit()
 
     # Grab Tweets
     queue = twitter_api.get_feed(twitter_handle, int(nums))
