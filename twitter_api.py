@@ -1,4 +1,4 @@
-from keys import *
+#from keys import *
 import os
 import os.path
 from os import path
@@ -6,8 +6,8 @@ import tweepy
 import concurrent.futures
 
 def get_feed(twitter_handle,numTweets):
-    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-    auth.set_access_token(ACCESS_TOKEN,ACCESS_TOKEN_SECRET)
+    auth = tweepy.OAuthHandler(os.environ['CONSUMER_KEY'], os.environ['CONSUMER_SECRET'])
+    auth.set_access_token(os.environ['ACCESS_TOKEN'],os.environ['ACCESS_TOKEN_SECRET'])
     api = tweepy.API(auth)
 
     # Print Twitter Feed of a User
