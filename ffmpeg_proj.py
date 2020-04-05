@@ -68,4 +68,4 @@ def gen_daily_video(twitter_handle,nums):
 
 
 
-gen_daily_video("kingjames",3)
+# gen_daily_video("kingjames",3)
