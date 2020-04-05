@@ -5,6 +5,7 @@ import os
 import os.path
 from os import path
 import time
+import shlex
 
 '''
 Main Exercise:  
@@ -31,6 +32,7 @@ def gen_daily_video(twitter_handle,nums):
 
     # Grab Tweets
     queue = twitter_api.get_feed(twitter_handle, int(nums))
+    #queue = ["testing11","testing2","testing3"]
 
     # Open File in Write Mode
     file_obj = open("list.txt","w") 
@@ -40,10 +42,12 @@ def gen_daily_video(twitter_handle,nums):
 
     # Generates 3 second .mp4 file given text
     for i in range(len(queue)):
-        p1 = subprocess.Popen('ffmpeg -f lavfi -i color=c=blue:s=320x240:d=3 -vf \
+        cmd = 'ffmpeg -f lavfi -i color=c=blue:s=320x240:d=3 -vf \
         "drawtext=fontfile=/path/to/font.ttf:fontsize=12: \
         fontcolor=white:x=(w-text_w)/2:y=(h-text_h)/2:text={str1}" \
-        output{i}.mp4'.format(str1 = queue[i], i=i))
+        output{i}.mp4'.format(str1 = queue[i], i=i)
+
+        p1 = subprocess.Popen(shlex.split(cmd))
         p1.wait()
 
     # Merge
@@ -64,3 +68,4 @@ def gen_daily_video(twitter_handle,nums):
 
 
 
+gen_daily_video("kingjames",3)
