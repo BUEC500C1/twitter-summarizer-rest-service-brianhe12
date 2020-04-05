@@ -51,14 +51,16 @@ def gen_daily_video(twitter_handle,nums):
         p1.wait()
 
     # Merge
-    p2 = subprocess.Popen('ffmpeg -f concat -safe 0 -i list.txt -c copy output_video.mp4')
+    merge = 'ffmpeg -f concat -safe 0 -i list.txt -c copy output_video.mp4'
+    p2 = subprocess.Popen(shlex.split(merge))
 
     # Wait for subprocess to finish
     p2.wait()
 
     # Remove Files
     for i in range(len(queue)):
-        p3 = subprocess.Popen(('rm output{i}.mp4').format(i = i))
+        cmd = ('rm output{i}.mp4').format(i = i)
+        p3 = subprocess.Popen(shlex.split(cmd))
 
     # Wait for subprocess to finish
     p3.wait()
