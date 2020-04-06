@@ -33,7 +33,6 @@ def gen_daily_video(twitter_handle,nums):
 
     # Grab Tweets
     queue = twitter_api.get_feed(twitter_handle, int(nums))
-    #queue = ["testing118","testing2","testing3"]
 
     # Open File in Write Mode
     file_obj = open("list.txt","w") 
