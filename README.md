@@ -5,7 +5,7 @@ Created a module that generates a daily video summarzing a twitter handle day. T
 
 To run, type in twitter handle and number of tweets parameter into the URL.
 
-Example: ```http://127.0.0.1:5000/userhandle/3``` will return a video of the three most recent tweets from user 'userhandle'.
+Example: ```https://ec500-flask.herokuapp.com/exampleuserhandle/3``` will return a 9 second video of the three most recent tweets from user 'exampleuserhandle'.
 
 ## Built with:
 
