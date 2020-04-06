@@ -6,6 +6,7 @@ import os.path
 from os import path
 import time
 import shlex
+import shutil
 
 '''
 Main Exercise:  
@@ -32,7 +33,7 @@ def gen_daily_video(twitter_handle,nums):
 
     # Grab Tweets
     queue = twitter_api.get_feed(twitter_handle, int(nums))
-    #queue = ["testing11","testing2","testing3"]
+    #queue = ["testing118","testing2","testing3"]
 
     # Open File in Write Mode
     file_obj = open("list.txt","w") 
@@ -65,9 +66,9 @@ def gen_daily_video(twitter_handle,nums):
     # Wait for subprocess to finish
     p3.wait()
 
+    # Move File
+    shutil.move(os.path.join('./', 'output_video.mp4'), os.path.join('./static/', 'output_video.mp4'))
+
     # Finish
     print('\033[92m' + 'Finished in ' + str(round(time.time() - start_time,2)) + ' seconds' + '\033[0m')
 
-
-
-# gen_daily_video("kingjames",3)
