@@ -11,7 +11,7 @@ def generate_error_msg(twitter_handle):
 @app.route('/<twitter_handle>/<string:nums>', methods=['GET'])
 def daily_post(twitter_handle,nums):
     ffmpeg_proj.gen_daily_video(twitter_handle,nums)
-    return "Video Downloaded. Please go back to ec500-flask.herokuapp.com to view your video"
+    return "Video Downloaded. Please open a new incognito tab (ctrl+shift+n) and go to ec500-flask.herokuapp.com to view your generated video"
 
 @app.route("/")
 def video():
